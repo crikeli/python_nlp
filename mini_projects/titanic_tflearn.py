@@ -47,9 +47,15 @@ to_ignore = [1,6]
 data = preprocess(data, to_ignore)
 
 # Training the three layer neural net.
+# The shape of the input data is that it has a total of six features(none stands for an unknown dimension)
 net = tflearn.input_data(shape=[None, 6])
+# incoming is the tensor from the previous node, followed by the number of neurons in the layer
 net = tflearn.fully_connected(net, 32)
+# incoming is the tensor from the previous node, followed by the number of neurons in the layer
 net = tflearn.fully_connected(net, 32)
+# incoming is the tensor from the previous node, followed by the number of neurons in the layer
+# An activation function is applied, in this case, a softmax.
+# Softmax functions are implemented in the final layerof a classification centric NN.
 net = tflearn.fully_connected(net, 2, activation='softmax')
 net = tflearn.regression(net)
 
