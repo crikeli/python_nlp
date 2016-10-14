@@ -54,6 +54,7 @@ def add_tweets_to_csv(tweets):
             if tweet:
                 writer.writerow([tweet])
 
+# Need to understand this
 if __name__ == "__main__":
     tweets = get_all_tweets("realdonaldtrump")
     add_tweets_to_csv(tweets)
