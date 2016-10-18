@@ -2,11 +2,12 @@
 import tweepy
 import csv
 import re
+from textblob import TextBlob
 
-consumer_key = ""
-consumer_secret = ""
-access_key = ""
-access_secret = ""
+consumer_key = "qc3xNBhXKoeuaNyOdr1FDWwzZ"
+consumer_secret = "HW6z7h9DYFFJZmZTrQfcGkMONa5k5X1HYmE2Qv0JuOgCIBXRBg"
+access_key = "4900371912-CPNC1CIg0uDKylFEPClYJqw7fKLqoyfZ2MczCjl"
+access_secret = "7n8dkQi3NBtJFm4bEgo5sftaNFv5IRkts1R7gpjV2UbOT"
 
 def get_all_tweets(screen_name):
     # This array consists of every single tweet(the last 3024) by Donald Trump
@@ -25,6 +26,10 @@ def get_all_tweets(screen_name):
             # Donald Trump Tweets from his Android phone.
             if tweet.source == 'Twitter for Android':
                 all_tweets.append(tweet.text.encode("utf-8"))
+                print(tweet.text)
+                analysis = TextBlob(tweet.text)
+                print(analysis.sentiment)
+
 
         print("Retrieved %s tweets so far" %(len(all_tweets)))
         # Saving the id of the oldest tweet received - 1
